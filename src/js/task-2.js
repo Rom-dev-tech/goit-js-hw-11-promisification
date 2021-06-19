@@ -8,8 +8,6 @@ const users = [
 ];
 
 const toggleUserState = (allUsers, userName) => {
-  const DELAY = 1000;
-
   const updatedUsers = allUsers.map(user =>
     user.name === userName ? { ...user, active: !user.active } : user,
   );
