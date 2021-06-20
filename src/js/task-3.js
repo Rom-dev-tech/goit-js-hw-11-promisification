@@ -11,19 +11,21 @@ const makeTransaction = transaction => {
     const canProcess = Math.random() > 0.3;
     setTimeout(() => {
       if (canProcess) {
-        resolve(transaction.id, delay);
+        resolve(`Transaction ${transaction.id} processed in ${delay}ms`);
       }
-      reject(transaction.id);
+      reject(
+        `Error processing transaction ${transaction.id}. Please try again later.`,
+      );
     }, delay);
   });
 };
 
-const logSuccess = (id, time) => {
-  console.log(`Transaction ${id} processed in ${time}ms`);
+const logSuccess = result => {
+  console.log(result);
 };
 
-const logError = id => {
-  console.warn(`Error processing transaction ${id}. Please try again later.`);
+const logError = err => {
+  console.warn(err);
 };
 
 /*
